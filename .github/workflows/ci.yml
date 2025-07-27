@@ -33,10 +33,12 @@ jobs:
                 username: ${{ github.actor }}
                 password: ${{ secrets.GITHUB_TOKEN }}
             - name: Convert repository name to lowercase
-              run: echo "REPOSITORY_NAME=${{ github.repository }}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
+              run: |
+                echo "REPOSITORY_NAME=${{ github.repository }}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
+                echo "Repository name is: ${{ env.REPOSITORY_NAME }}"
             - name: Build and push
               uses: docker/build-push-action@v6
               with:
                 context: .
-                push: true # אם אתה רוצה לדחוף את התמונה
+                push: true
                 tags: ghcr.io/${{ env.REPOSITORY_NAME }}:latest
