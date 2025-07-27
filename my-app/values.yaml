@@ -1,0 +1,10 @@
+replicaCount: 3
+
+image:
+  repository: ghcr.io/my-user/my-app
+  tag: latest
+
+service:
+  name: my-app-service
+  type: ClusterIP
+  port: 80
