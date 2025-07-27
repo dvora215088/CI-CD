@@ -36,5 +36,5 @@ jobs:
               uses: docker/build-push-action@v6
               with:
                 context: .
-                push: false
-                tags: ghcr.io${{ github.repository}}:latest
+                push: true # אם אתה רוצה לדחוף את התמונה
+                tags: ghcr.io/${{ github.repository | lower }}:latest
